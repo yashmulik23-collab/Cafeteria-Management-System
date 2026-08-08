@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafeteria Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Welcome to Bastian</h1>
+</header>
+
+<nav>
+    <a href="#" id="home-btn">Home</a> 
+    <a href="#" id="order-details-btn">Order Details</a>
+    <div class="dropdown">
+        <a href="#">Filter</a>
+        <div class="dropdown-content">
+            <a href="#" class="filter-btn" data-category="pizza-pasta">Pizza and Pasta</a>
+            <a href="#" class="filter-btn" data-category="burger-sandwich">Burger and Sandwich</a>
+            <a href="#" class="filter-btn" data-category="snacks">Snacks</a>
+            <a href="#" class="filter-btn" data-category="combos">Combos</a>
+            <a href="#" class="filter-btn" data-category="dessert">Dessert</a>
+            <a href="#" class="filter-btn" data-category="beverages">Beverages</a>
+        </div>
+    </div>
+    <a href="about.html" id="about-us-btn">About Us</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<div class="container">
+    <!-- Category Boxes Section (Initially Visible) -->
+    <div id="category-boxes" class="category-boxes">
+        <div class="menu">
+            <b><span class="menu-text">MENU</span></b>
+        </div>        
+        <div class="category-items">
+            <div class="category-box" data-category="pizza-pasta">
+                <img src="https://thumbs.dreamstime.com/b/alfredo-cheese-pasta-made-penne-pasta-white-sauce-cheese-tomato-spaghetti-garlic-bread-bruschetta-vegetarian-112712306.jpg" alt="Pizza and Pasta">
+                <h3>Pizza and Pasta</h3>
+            </div>
+            
+            <div class="category-box" data-category="burger-sandwich">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdvfpocnFHjV_QvshgO4l1N5qDMAMAOrLJ-rNX8WX77qTc_OtHmK-vwcW79Ak6-TrWPs0&usqp=CAU" alt="Burger and Sandwich">
+                <h3>Burger and Sandwich</h3>
+            </div>
+
+            <div class="category-box" data-category="snacks">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuGOxM-nWCrkBXvH74ZP7WCfvOCwL-vV4fOSKBj3dF_Ze36vvX0YdO1ODGp9DpkkRc1c0&usqp=CAU" alt="Snacks">
+                <h3>Snacks</h3>
+            </div>
+            
+            <div class="category-box" data-category="combos">
+                <img src="https://t4.ftcdn.net/jpg/05/76/26/87/360_F_576268766_5UKFyOkMfMw3CndUMul47tLF3pB23Ood.jpg" alt="Combos">
+                <h3>Combos</h3>
+            </div>
+
+            <div class="category-box" data-category="beverages">
+                <img src="https://img.freepik.com/premium-photo/variety-chilled-beverages-displayed-modern-glass-drink-dispenser_1234738-47821.jpg" alt="Beverages">
+                <h3>Beverages</h3>
+            </div>                     
+
+            <div class="category-box" data-category="dessert">
+                <img src="https://t4.ftcdn.net/jpg/12/68/61/15/360_F_1268611560_QIL05RZuNXqTRtQKkb6T5ZKx9A13AR7K.jpg" alt="Dessert">
+                <h3>Dessert</h3>
+            </div>              
+        </div>
+    </div>
+
+    <!-- Menu Section (Initially Hidden) -->
+    <div id="menu" class="menu" style="display:none;">
+        <div class="menu">
+            <b><span class="menu-text">MENU</span></b>
+            <button id="back-to-categories" class="back-btn">← Back</button>
+        </div>        
+        <div class="menu-items">
+            <div class="menu-item" data-category="burger-sandwich" data-name="Veg Cheese Sandwich" data-price="119">
+                <h3>Veg Cheese Sandwich</h3>
+                <p>Price: ₹119</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="burger-sandwich" data-name="Veg Peri Peri Cheese Sandwich" data-price="119">
+                <h3>Veg Peri Peri Cheese Sandwich</h3>
+                <p>Price: ₹119</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="burger-sandwich" data-name="Veg Sandwich" data-price="69">
+                <h3>Veg Sandwich</h3>
+                <p>Price: ₹69</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="burger-sandwich" data-name="Veg Cheese Mayo Sandwich" data-price="129">
+                <h3>Veg Cheese Mayo Sandwich</h3>
+                <p>Price: ₹129</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="burger-sandwich" data-name="Aloo Tikki Burger" data-price="69">
+                <h3>Aloo Tikki Burger</h3>
+                <p>Price: ₹69</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="burger-sandwich" data-name="Aloo Tikki Cheese Burger" data-price="79">
+                <h3>Aloo Tikki Cheese Burger</h3>
+                <p>Price: ₹79</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="burger-sandwich" data-name="Veggie Cheese Burger" data-price="89">
+                <h3>Veggie Cheese Burger</h3>
+                <p>Price: ₹89</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="burger-sandwich" data-name="Chocolate Grilled Sandwich" data-price="109">
+                <h3>Chocolate Grilled Sandwich</h3>
+                <p>Price: ₹109</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="burger-sandwich" data-name="Chocolate Cheese Grilled Sandwich" data-price="129">
+                <h3>Chocolate Cheese Grilled Sandwich</h3>
+                <p>Price: ₹129</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="burger-sandwich" data-name="Tandoori Paneer Burger" data-price="99">
+                <h3>Tandoori Paneer Burger [Serves 1]</h3>
+                <p>Price: ₹99</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="burger-sandwich" data-name="Corn Cheese Burger" data-price="95">
+                <h3>Corn Cheese Burger</h3>
+                <p>Price: ₹95</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="burger-sandwich" data-name="Veggie Burger" data-price="79">
+                <h3>Veggie Burger</h3>
+                <p>Price: ₹79</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="burger-sandwich" data-name="Cheesy Jalapeno Corn Burger" data-price="109">
+                <h3>Cheesy Jalapeno Corn Burger</h3>
+                <p>Price: ₹109</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="burger-sandwich" data-name="Makhani Paneer Burger" data-price="109">
+                <h3>Makhani Paneer Burger</h3>
+                <p>Price: ₹109</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="burger-sandwich" data-name="Veg Cheese Grilled Sandwich" data-price="149">
+                <h3>Veg Cheese Grilled Sandwich</h3>
+                <p>Price: ₹149</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="burger-sandwich" data-name="Tandoor Paneer Cheese Grilled Sandwich" data-price="189">
+                <h3>Tandoor Paneer Cheese Grilled Sandwich</h3>
+                <p>Price: ₹189</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="burger-sandwich" data-name="Veg Grilled Sandwich" data-price="95">
+                <h3>Veg Grilled Sandwich</h3>
+                <p>Price: ₹95</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="burger-sandwich" data-name="Paneer Cheese Grilled Sandwich" data-price="179">
+                <h3>Paneer Cheese Grilled Sandwich</h3>
+                <p>Price: ₹179</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="burger-sandwich" data-name="Classic Cheese Grilled Sandwich" data-price="149">
+                <h3>Classic Cheese Grilled Sandwich</h3>
+                <p>Price: ₹149</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="burger-sandwich" data-name="Bombay Cheese Grilled Sandwich" data-price="149">
+                <h3>Bombay Cheese Grilled Sandwich</h3>
+                <p>Price: ₹149</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="burger-sandwich" data-name="Tikki Cheese Grilled Sandwich" data-price="139">
+                <h3>Tikki Cheese Grilled Sandwich</h3>
+                <p>Price: ₹139</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="burger-sandwich" data-name="Cheese Chilli Grilled Sandwich" data-price="159">
+                <h3>Cheese Chilli Grilled Sandwich</h3>
+                <p>Price: ₹159</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="burger-sandwich" data-name="Veg Cheese Mayo Grilled Sandwich" data-price="169">
+                <h3>Veg Cheese Mayo Grilled Sandwich</h3>
+                <p>Price: ₹169</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="burger-sandwich" data-name="Cheese Corn Capsicum Grilled Sandwich" data-price="169">
+                <h3>Cheese Corn Capsicum Grilled Sandwich</h3>
+                <p>Price: ₹169</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="burger-sandwich" data-name="Cheese Onion Grilled Sandwich" data-price="129">
+                <h3>Cheese Onion Grilled Sandwich</h3>
+                <p>Price: ₹129</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="burger-sandwich" data-name="Cheese Blast Sandwich" data-price="179">
+                <h3>Cheese Blast Sandwich</h3>
+                <p>Price: ₹179</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+
+
+            <div class="menu-item" data-category="pizza-pasta" data-name="Classic Italiano Penne Pasta (White Pasta)" data-price="179">
+                <h3>Classic Italiano Penne Pasta (White Pasta)</h3>
+                <p>Price: ₹179</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="pizza-pasta" data-name="Red Devil Pasta Penne" data-price="159">
+                <h3>Red Devil Pasta Penne</h3>
+                <p>Price: ₹159</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="pizza-pasta" data-name="Peri Peri Pasta [Spicy]" data-price="149">
+                <h3>Peri Peri Pasta [Spicy]</h3>
+                <p>Price: ₹149</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="pizza-pasta" data-name="Margherita Pizza [6 inches]" data-price="129">
+                <h3>Margherita Pizza [6 inches]</h3>
+                <p>Price: ₹129</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="pizza-pasta" data-name="Vegetalia Pizza [6 inches]" data-price="139">
+                <h3>Vegetalia Pizza [6 inches]</h3>
+                <p>Price: ₹139</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="pizza-pasta" data-name="Barbeque Paneer Pizza [6 inches]" data-price="189">
+                <h3>Barbeque Paneer Pizza [6 inches]</h3>
+                <p>Price: ₹189</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="pizza-pasta" data-name="Paneer Vegetalia Pizza [6 inches]" data-price="175">
+                <h3>Paneer Vegetalia Pizza [6 inches]</h3>
+                <p>Price: ₹175</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="pizza-pasta" data-name="Cheese and Corn Pizza [6 inches]" data-price="135">
+                <h3>Cheese and Corn Pizza [6 inches]</h3>
+                <p>Price: ₹135</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="pizza-pasta" data-name="Farmhouse Pizza [6 inches]" data-price="165">
+                <h3>Farmhouse Pizza [6 inches]</h3>
+                <p>Price: ₹165</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+
+
+            <div class="menu-item" data-category="snacks" data-name="Garlic Bread" data-price="139">
+                <h3>Garlic Bread</h3>
+                <p>Price: ₹139</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="snacks" data-name="Pizza Toasty" data-price="129">
+                <h3>Pizza Toasty</h3>
+                <p>Price: ₹129</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="snacks" data-name="Cheese Chilli Toasty" data-price="139">
+                <h3>Cheese Chilli Toasty</h3>
+                <p>Price: ₹139</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="snacks" data-name="Tandoor Paneer Toasty" data-price="149">
+                <h3>Tandoor Paneer Toasty</h3>
+                <p>Price: ₹149</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="snacks" data-name="Peri Peri Paneer Toasty" data-price="149">
+                <h3>Peri Peri Paneer Toasty</h3>
+                <p>Price: ₹149</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="snacks" data-name="Nachos" data-price="129">
+                <h3>Nachos</h3>
+                <p>Price: ₹129</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="snacks" data-name="Salsa Nachos" data-price="169">
+                <h3>Salsa Nachos</h3>
+                <p>Price: ₹169</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="snacks" data-name="Veg Nuggets" data-price="99">
+                <h3>Veg Nuggets</h3>
+                <p>Price: ₹99</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="snacks" data-name="Cheese Corn Balls" data-price="119">
+                <h3>Cheese Corn Balls</h3>
+                <p>Price: ₹119</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="snacks" data-name="Cheese Chilli Balls [Spicy]" data-price="119">
+                <h3>Cheese Chilli Balls [Spicy]</h3>
+                <p>Price: ₹119</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="snacks" data-name="Masala Wedges" data-price="139">
+                <h3>Masala Wedges</h3>
+                <p>Price: ₹139</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="snacks" data-name="Cheese Grill Snack" data-price="99">
+                <h3>Cheese Grill Snack</h3>
+                <p>Price: ₹99</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="snacks" data-name="Fries" data-price="99">
+                <h3>Fries</h3>
+                <p>Price: ₹99</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="snacks" data-name="Peri-Peri Fries" data-price="109">
+                <h3>Peri-Peri Fries</h3>
+                <p>Price: ₹109</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="snacks" data-name="Peri Peri Cheese Blast Fries" data-price="179">
+                <h3>Peri Peri Cheese Blast Fries</h3>
+                <p>Price: ₹179</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="snacks" data-name="Masala Fries" data-price="109">
+                <h3>Masala Fries</h3>
+                <p>Price: ₹109</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="snacks" data-name="Cheese Fries" data-price="159">
+                <h3>Cheese Fries</h3>
+                <p>Price: ₹159</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="snacks" data-name="Cheese Blast Fries" data-price="169">
+                <h3>Cheese Blast Fries</h3>
+                <p>Price: ₹169</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="snacks" data-name="Honey Chilli Fries" data-price="169">
+                <h3>Honey Chilli Fries</h3>
+                <p>Price: ₹169</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="snacks" data-name="Schezwan Fries" data-price="119">
+                <h3>Schezwan Fries</h3>
+                <p>Price: ₹119</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="snacks" data-name="Jalapeno Cheese Fries" data-price="179">
+                <h3>Jalapeno Cheese Fries</h3>
+                <p>Price: ₹179</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="snacks" data-name="Bruschetta" data-price="129">
+                <h3>Bruschetta</h3>
+                <p>Price: ₹129</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="snacks" data-name="Paneer Bruschetta" data-price="149">
+                <h3>Paneer Bruschetta</h3>
+                <p>Price: ₹149</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="snacks" data-name="Cheese Garlic Bread" data-price="129">
+                <h3>Cheese Garlic Bread</h3>
+                <p>Price: ₹129</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+
+
+            <div class="menu-item" data-category="combos" data-name="Aloo Tikki Burger + Masala Fries + Ice Cream Cold Coffee Combo" data-price="409">
+                <h3>Aloo Tikki Burger + Masala Fries + Ice Cream Cold Coffee Combo</h3>
+                <p>Price: ₹409</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+            <div class="menu-item" data-category="combos" data-name="Exotic Pizza + Cold Coffee Combo" data-price="249">
+                <h3>Exotic Pizza + Cold Coffee Combo</h3>
+                <p>Price: ₹249</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>           
+            <div class="menu-item" data-category="combos" data-name="Veg Cheese Grilled Sandwich + Garlic Bread Combo" data-price="249">
+                <h3>Veg Cheese Grilled Sandwich + Garlic Bread Combo</h3>
+                <p>Price: ₹249</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>            
+            <div class="menu-item" data-category="combos" data-name="White Pasta With Garlic Bread + 1 Masala Fries Combo" data-price="269">
+                <h3>White Pasta With Garlic Bread + 1 Masala Fries Combo</h3>
+                <p>Price: ₹269</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>          
+            <div class="menu-item" data-category="combos" data-name="Paneer Cheese Grilled Sandwich + Cold Coffee Combo" data-price="259">
+                <h3>Paneer Cheese Grilled Sandwich + Cold Coffee Combo</h3>
+                <p>Price: ₹259</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>          
+            <div class="menu-item" data-category="combos" data-name="2 Aloo Tikki Cheese Burger + 1 Veg Cheese Grilled Sandwich" data-price="309">
+                <h3>2 Aloo Tikki Cheese Burger + 1 Veg Cheese Grilled Sandwich</h3>
+                <p>Price: ₹309</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>       
+            <div class="menu-item" data-category="combos" data-name="1 Mexican Pizza + 2 Jalapeno Corn Burger Combo" data-price="329">
+                <h3>1 Mexican Pizza + 2 Jalapeno Corn Burger Combo</h3>
+                <p>Price: ₹329</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>         
+            <div class="menu-item" data-category="combos" data-name="1 Mexican Corn Pizza[8 inches] + 2 Tandoori Paneer Burger Combo" data-price="429">
+                <h3>1 Mexican Corn Pizza[8 inches] + 2 Tandoori Paneer Burger Combo</h3>
+                <p>Price: ₹429</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>       
+            <div class="menu-item" data-category="combos" data-name="2 Aloo Tikki Burger + 1 Tandoori Paneer cheese Grilled Sandwich + 1 Fries" data-price="459">
+                <h3>2 Aloo Tikki Burger + 1 Tandoori Paneer cheese Grilled Sandwich + 1 Fries</h3>
+                <p>Price: ₹459</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div> 
+
+
+            <div class="menu-item" data-category="beverages" data-name="Classic Cold Coffee" data-price="99">
+                <h3>Classic Cold Coffee</h3>
+                <p>Price: ₹99</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>  
+            <div class="menu-item" data-category="beverages" data-name="Brownie Frappe" data-price="109">
+                <h3>Brownie Frappe</h3>
+                <p>Price: ₹109</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>          
+            <div class="menu-item" data-category="beverages" data-name="Oreo Shake" data-price="49">
+                <h3>Oreo Shake</h3>
+                <p>Price: ₹49</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>           
+            <div class="menu-item" data-category="beverages" data-name="Hazelnut Frappe" data-price="109">
+                <h3>Hazelnut Frappe</h3>
+                <p>Price: ₹109</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>          
+            <div class="menu-item" data-category="beverages" data-name="Oreo Frappe" data-price="109">
+                <h3>Oreo Frappe</h3>
+                <p>Price: ₹109</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>          
+            <div class="menu-item" data-category="beverages" data-name="Caramel Frappe" data-price="109">
+                <h3>Caramel Frappe</h3>
+                <p>Price: ₹109</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>          
+            <div class="menu-item" data-category="beverages" data-name="Blue Heaven Shot Mocktail" data-price="89">
+                <h3>Blue Heaven Shot Mocktail</h3>
+                <p>Price: ₹89</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>          
+            <div class="menu-item" data-category="beverages" data-name="Lime Mint Mojito Mocktail" data-price="89">
+                <h3>Lime Mint Mojito Mocktail</h3>
+                <p>Price: ₹89</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>           
+            <div class="menu-item" data-category="beverages" data-name="Pinacolada Mocktail" data-price="99">
+                <h3>Pinacolada Mocktail</h3>
+                <p>Price: ₹99</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>            
+            <div class="menu-item" data-category="beverages" data-name="Strawberry Mojito Mocktail" data-price="79">
+                <h3>Strawberry Mojito Mocktail</h3>
+                <p>Price: ₹79</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>           
+            <div class="menu-item" data-category="beverages" data-name="Green Apple Mocktail" data-price="89">
+                <h3>Green Apple Mocktail</h3>
+                <p>Price: ₹89</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>          
+            <div class="menu-item" data-category="beverages" data-name="Passion Fruit Mocktail" data-price="89">
+                <h3>Passion Fruit Mocktail</h3>
+                <p>Price: ₹89</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>          
+            <div class="menu-item" data-category="beverages" data-name="Watermelon Mojito" data-price="89">
+                <h3>Watermelon Mojito</h3>
+                <p>Price: ₹89</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>            
+            <div class="menu-item" data-category="beverages" data-name="Litchi Mojito" data-price="89">
+                <h3>Litchi Mojito</h3>
+                <p>Price: ₹89</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>           
+            <div class="menu-item" data-category="beverages" data-name="Hot Coffee" data-price="89">
+                <h3>Hot Coffee</h3>
+                <p>Price: ₹89</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>           
+            <div class="menu-item" data-category="beverages" data-name="Hot chocolate Coffee" data-price="89">
+                <h3>Hot chocolate Coffee</h3>
+                <p>Price: ₹89</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>          
+            <div class="menu-item" data-category="beverages" data-name="Hot Hazelnut Coffee" data-price="99">
+                <h3>Hot Hazelnut Coffee</h3>
+                <p>Price: ₹99</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>          
+            <div class="menu-item" data-category="beverages" data-name="Hot Irish Coffee" data-price="99">
+                <h3>Hot Irish Coffee</h3>
+                <p>Price: ₹99</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>           
+            <div class="menu-item" data-category="beverages" data-name="Black Coffee" data-price="49">
+                <h3>Black Coffee</h3>
+                <p>Price: ₹49</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>           
+            <div class="menu-item" data-category="beverages" data-name="Cappuccino" data-price="79">
+                <h3>Cappuccino</h3>
+                <p>Price: ₹79</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>           
+            <div class="menu-item" data-category="beverages" data-name="Hot Caramel Coffee" data-price="99">
+                <h3>Hot Caramel Coffee</h3>
+                <p>Price: ₹99</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>           
+            <div class="menu-item" data-category="beverages" data-name="Cold Coffee With Cream" data-price="99">
+                <h3>Cold Coffee With Cream</h3>
+                <p>Price: ₹99</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>           
+            <div class="menu-item" data-category="beverages" data-name="Chocolate Cold Coffee" data-price="119">
+                <h3>Chocolate Cold Coffee</h3>
+                <p>Price: ₹119</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>          
+            <div class="menu-item" data-category="beverages" data-name="Vanilla Ice Cream Coffee" data-price="119">
+                <h3>Vanilla Ice Cream Coffee</h3>
+                <p>Price: ₹119</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>           
+            <div class="menu-item" data-category="beverages" data-name="Italiano Thick Coffee" data-price="79">
+                <h3>Italiano Thick Coffee</h3>
+                <p>Price: ₹79</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>           
+            <div class="menu-item" data-category="beverages" data-name="Iced Coffee" data-price="79">
+                <h3>Iced Coffee</h3>
+                <p>Price: ₹79</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>           
+            <div class="menu-item" data-category="beverages" data-name="Red Velvet Shake" data-price="119">
+                <h3>Red Velvet Shake</h3>
+                <p>Price: ₹119</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>          
+            <div class="menu-item" data-category="beverages" data-name="Kit Kat Shake" data-price="119">
+                <h3>Kit Kat Shake</h3>
+                <p>Price: ₹119</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>          
+            <div class="menu-item" data-category="beverages" data-name="Brownie Shake" data-price="119">
+                <h3>Brownie Shake</h3>
+                <p>Price: ₹119</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+
+
+            <div class="menu-item" data-category="dessert" data-name="Hot Brownie" data-price="149">
+                <h3>Hot Brownie</h3>
+                <p>Price: ₹149</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div> 
+            
+            <div class="menu-item" data-category="dessert" data-name="Fresh Strawberry Cream" data-price="129">
+                <h3>Fresh Strawberry Cream</h3>
+                <p>Price: ₹129</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>          
+            <div class="menu-item" data-category="dessert" data-name="KitKat Nutella Waffle [2 Pieces]" data-price="169">
+                <h3>KitKat Nutella Waffle [2 Pieces]</h3>
+                <p>Price: ₹169</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>           
+            <div class="menu-item" data-category="dessert" data-name="White Chocolate Waffle [2 Pieces]" data-price="149">
+                <h3>White Chocolate Waffle [2 Pieces]</h3>
+                <p>Price: ₹149</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>           
+            <div class="menu-item" data-category="dessert" data-name="Dark Chocolate Waffle [2 Pieces]" data-price="149">
+                <h3>Dark Chocolate Waffle [2 Pieces]</h3>
+                <p>Price: ₹149</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>           
+            <div class="menu-item" data-category="dessert" data-name="Red Velvet Waffle [2 Pieces]" data-price="169">
+                <h3>Red Velvet Waffle [2 Pieces]</h3>
+                <p>Price: ₹169</p>
+                <button class="add-to-cart-btn">Add to Order</button>
+            </div>
+                    
+    <div class="menu-item" data-category="dessert" data-name="Fresh Strawberry Cream" data-price="129">
+        <h3>Fresh Strawberry Cream</h3>
+        <p>Price: ₹129</p>
+        <button class="add-to-cart-btn">Add to Order</button>
+    </div>          
+    <div class="menu-item" data-category="dessert" data-name="KitKat Nutella Waffle [2 Pieces]" data-price="169">
+        <h3>KitKat Nutella Waffle [2 Pieces]</h3>
+        <p>Price: ₹169</p>
+        <button class="add-to-cart-btn">Add to Order</button>   
+    </div>           
+    <div class="menu-item" data-category="dessert" data-name="White Chocolate Waffle [2 Pieces]" data-price="149">
+        <h3>White Chocolate Waffle [2 Pieces]</h3>
+        <p>Price: ₹149</p>
+        <button class="add-to-cart-btn">Add to Order</button>
+    </div>           
+    <div class="menu-item" data-category="dessert" data-name="Dark Chocolate Waffle [2 Pieces]" data-price="149">
+        <h3>Dark Chocolate Waffle [2 Pieces]</h3>
+        <p>Price: ₹149</p>
+        <button class="add-to-cart-btn">Add to Order</button>
+    </div>           
+    <div class="menu-item" data-category="dessert" data-name="Red Velvet Waffle [2 Pieces]" data-price="169">
+        <h3>Red Velvet Waffle [2 Pieces]</h3>
+        <p>Price: ₹169</p>
+        <button class="add-to-cart-btn">Add to Order</button>
+    </div>             
+        </div>
+    </div>
+
+    <!-- Order Details Section (Initially Hidden) -->
+    <div id="order" class="order-details">
+        <h2>Order Details</h2>
+        <table id="order-table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="order-items"></tbody>
+        </table>
+        <div class="table-selection">
+            <label for="table-number">Table:</label>
+            <select id="table-number" name="table-number">
+                <option value="" disabled selected>Select</option>
+                <script>
+                    for (let i = 1; i <= 50; i++) {
+                        document.write(`<option value="${i}">Table ${i}</option>`);
+                    }
+                </script>
+            </select>
+        </div>
+        <div id="total-price">
+            Total: ₹0
+        </div>
+        <button class="checkout-btn">Proceed</button>
+    </div>
+</div>
+
+
+<style>
+    .order-details {
+        position: relative;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        max-width: 600px;
+        margin: 50px;
+        text-align: center;
+    }
+
+    .order-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .order-header h2 {
+        margin: 20;
+        font-size: 20px;
+    }
+
+    .table-selection {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .table-selection label {
+        font-weight: bold;
+    }
+
+    .table-selection select {
+        padding: 5px;
+        font-size: 14px;
+        border-radius: 5px;
+    }
+</style>
+
+<!-- Notification Section -->
+<div id="notification" class="notification">
+    <span id="notification-text">Item added to your order.</span>
+</div>
+
+<script>
+    // Category boxes functionality
+    document.querySelectorAll('.category-box').forEach(box => {
+        box.addEventListener('click', function() {
+            const category = this.getAttribute('data-category');
+            document.getElementById('category-boxes').style.display = 'none';
+            document.getElementById('menu').style.display = 'block';
+            filterMenuItems(category);
+        });
+    });
+
+    // Back to categories button
+    document.getElementById('back-to-categories').addEventListener('click', function() {
+        document.getElementById('menu').style.display = 'none';
+        document.getElementById('category-boxes').style.display = 'block';
+    });
+
+    // Select all the filter buttons
+    const filterButtons = document.querySelectorAll('.filter-btn');
+
+    // Select all the menu items
+    const menuItems = document.querySelectorAll('.menu-item');
+
+    // Function to filter items by category
+    function filterMenuItems(category) {
+        menuItems.forEach(item => {
+            if (category === 'all' || item.dataset.category === category) {
+                item.style.display = 'block';  // Show the item
+            } else {
+                item.style.display = 'none';  // Hide the item
+            }
+        });
+    }
+    
+    // Add click event listener to each filter button
+    filterButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const category = event.target.dataset.category;
+            document.getElementById('category-boxes').style.display = 'none';
+            document.getElementById('menu').style.display = 'block';
+            filterMenuItems(category);
+        });
+    });
+
+    // Show all items when the "Home" button is clicked
+    document.getElementById('home-btn').addEventListener('click', () => {
+        document.getElementById('menu').style.display = 'none';
+        document.getElementById('order').style.display = 'none';
+        document.getElementById('category-boxes').style.display = 'block';
+    });
+
+    // Order details section
+    let cart = [];
+
+    document.getElementById("order").style.display = "none";
+    // Show order details
+    document.getElementById("order-details-btn").addEventListener("click", function(e) {
+        e.preventDefault();
+        document.getElementById("order").style.display = "block";
+        document.getElementById("menu").style.display = "none";
+        document.getElementById("category-boxes").style.display = "none";
+    });
+
+    // Add item to the cart
+    document.querySelectorAll(".add-to-cart-btn").forEach(button => {
+        button.addEventListener("click", function() {
+            let itemName = this.parentElement.getAttribute("data-name");
+            let itemPrice = parseInt(this.parentElement.getAttribute("data-price"));
+            let itemCategory = this.parentElement.getAttribute("data-category");
+
+            let item = cart.find(cartItem => cartItem.name === itemName);
+
+            if (item) {
+                item.quantity++;
+            } else {
+                cart.push({ name: itemName, price: itemPrice, quantity: 1, category: itemCategory });
+            }
+
+            updateOrderDetails();
+            showNotification("Item added to your order.");
+        });
+    });
+
+    // Increase item quantity
+    function increaseItemQuantity(itemName) {
+        let item = cart.find(cartItem => cartItem.name === itemName);
+        if (item) {
+            item.quantity++;
+            updateOrderDetails();
+            showNotification("1 Item added to your order.");
+        }
+    }
+
+    // Decrease item quantity
+    function decreaseItemQuantity(itemName) {
+        let item = cart.find(cartItem => cartItem.name === itemName);
+        if (item) {
+            if (item.quantity > 1) {
+                item.quantity--;
+            } else {
+                cart = cart.filter(cartItem => cartItem.name !== itemName);
+            }
+            updateOrderDetails();
+            showNotification("1 Item removed from your order.");
+        }
+    }
+
+    // Update the order details in the table
+    function updateOrderDetails() {
+        let orderItems = document.getElementById("order-items");
+        let totalPrice = 0;
+
+        // Clear previous order items
+        orderItems.innerHTML = '';
+
+        cart.forEach(item => {
+            let row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${item.name}</td>
+                <td>
+                    <button class="decrease-btn" data-name="${item.name}">-</button>
+                    ${item.quantity}
+                    <button class="increase-btn" data-name="${item.name}">+</button>
+                </td>
+                <td>₹${item.price * item.quantity}</td>
+                
+            `;
+            orderItems.appendChild(row);
+            totalPrice += item.price * item.quantity;
+        });
+        // Update the total price
+        document.getElementById("total-price").innerText = `Total: ₹${totalPrice}`;
+
+        // Add event listeners to increase and decrease buttons
+        document.querySelectorAll(".increase-btn").forEach(button => {
+            button.addEventListener("click", function() {
+                let itemName = this.getAttribute("data-name");
+                increaseItemQuantity(itemName);
+            });
+        });
+        document.querySelectorAll(".decrease-btn").forEach(button => {
+            button.addEventListener("click", function() {
+                let itemName = this.getAttribute("data-name");
+                decreaseItemQuantity(itemName);
+            });
+        });
+    }
+    // Show notification
+    function showNotification(message) {
+        const notification = document.getElementById("notification");
+        const notificationText = document.getElementById("notification-text");
+        notificationText.textContent = message;
+
+        notification.style.opacity = "1"; // Make notification visible
+
+        // Hide notification after 2 seconds
+        setTimeout(() => {
+            notification.style.opacity = "0";
+        }, 2000);
+    }
+    // Checkout button functionality
+    document.querySelector(".checkout-btn").addEventListener("click", function() {
+    // Check if the cart is empty
+        if (cart.length === 0) {
+            showNotification("You have not ordered anything, add something to your order.");
+        } else {
+            // Proceed to checkout if items exist in the cart
+            window.location.href = "http://127.0.0.1:3000/Navbar/user.html";
+        }
+    });
+    // Open About Us in a new tab
+    document.getElementById("about-us-btn").addEventListener("click", function(e) {
+        e.preventDefault(); // Prevent the default anchor behavior
+        window.open("http://127.0.0.1:3000/Navbar/aboutus.html", "_blank"); // Open "about.html" in a new tab
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+    const contactButton = document.querySelector('a[href="#contact"]');
+
+    if (contactButton) {
+        contactButton.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default anchor behavior
+            window.location.href = 'http://127.0.0.1:3000/Navbar/contact.html'; // Redirect to Contact Us page
+        });
+    }
+});
+
+</script>
+</body>
+</html>

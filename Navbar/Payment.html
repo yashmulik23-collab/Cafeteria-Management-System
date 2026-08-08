@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="pay.css">
+    <style>
+        /* Styling for the payment container */
+        .payment-container {
+            text-align: center;
+            padding: 50px;
+        }
+
+        .pay-btn {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .pay-btn:hover {
+            background-color: #218838;
+        }
+
+        /* Processing animation */
+        .processing {
+            display: none;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .loader {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #556b2f;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Thank-you message */
+        .thank-you {
+            display: none;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 50px;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        .show-thank-you {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navbar styling */
+        nav {
+            background-color: #556b2f;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+            position: fixed;
+            top: -100px; /* Initially hidden above the screen */
+            width: 100%;
+            transition: top 0.7s ease-in-out; /* Smooth slide-in effect */
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 5px 10px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #f8f9fa;
+            transform: scale(1.1);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background-color: #f8f9fa;
+            left: 0;
+            bottom: 0;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        /* Active navbar animation */
+        .show-nav {
+            top: 0; /* Moves the navbar into view */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar (Initially Hidden) -->
+    <nav id="navbar">
+        <a href="#" id="home-btn">Home</a>
+        <a href="#">Your Order</a>
+        <a href="#">About Us</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <div class="payment-container" id="payment-container">
+        <h1>Pay here</h1>
+        <div class="payment-image"></div>
+        <button class="pay-btn" onclick="processPayment()">Paid</button>
+        
+        <div class="processing">
+            <div class="loader"></div>
+            Processing your transaction...
+        </div>
+    </div>
+
+    <div class="thank-you" id="thank-you">Thank you! Your transaction is completed.</div>
+
+    <script>
+        function processPayment() {
+            const processingElement = document.querySelector('.processing');
+            const thankYouElement = document.getElementById('thank-you');
+            const paymentContainer = document.getElementById('payment-container');
+            const navbar = document.getElementById("navbar");
+    
+            // Show processing animation
+            processingElement.style.display = 'block';
+    
+            // Simulate transaction delay
+            setTimeout(() => {
+                processingElement.style.display = 'none';
+                paymentContainer.style.display = 'none'; // Hide payment page
+                thankYouElement.style.display = 'block'; // Show thank-you message
+                thankYouElement.classList.add('show-thank-you'); // Add animation class
+    
+                // Show the navbar with slide-down effect
+                navbar.classList.add("show-nav");
+            }, 3000); // 3 seconds delay
+        }
+    
+        // Function to navigate to a new webpage when "Home" is clicked
+        document.getElementById("home-btn").addEventListener("click", function () {
+            window.location.href = "http://127.0.0.1:3000/mainpg.html"; // Replace with your actual webpage URL
+        });
+    </script>
+    
+
+</body>
+</html>
+
+<script src="payment.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+document.getElementById("payButton").addEventListener("click", async function () {
+    const response = await fetch("http://localhost:3000/create-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ amount: 100, currency: "INR" }) // ₹100
+    });
+
+    const order = await response.json();
+
+    var options = {
+        "key": "rzp_test_2aZZ79f8hPihwb",
+        "amount": order.amount,
+        "currency": order.currency,
+        "name": "Cafeteria Management",
+        "description": "Order Payment",
+        "order_id": order.id,
+        "handler": function (response) {
+            alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
+        },
+        "theme": {
+            "color": "#3399cc"
+        }
+    };
+
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+});
+</script>

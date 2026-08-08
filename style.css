@@ -1,0 +1,408 @@
+/* General reset and styling for body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+body {
+    background-image: url('mainpg\ bg.jpeg'); /* Specify the path to your image */
+    background-size: cover; /* Makes the background cover the entire screen */
+    background-position: center; /* Centers the background image */
+    background-attachment: fixed; /* Keeps the background fixed during scrolling */
+    margin: 0; /* Remove default margin */
+    height: 80vh; /* Ensures the body takes the full height of the screen */
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+}
+/* Header */
+header {
+    background-color: #556b2f;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    margin: 0;
+}
+/* Navigation Bar */
+nav {
+    background-color: #c2a482;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+}
+/* Navigation Bar */
+nav {
+    background-color: #9c7c5d;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    transition: background-color 0.3s ease; /* Optional: Transition for background color of the navbar */
+}
+
+/* Navigation Links */
+nav a {
+    color: #fff;
+    text-decoration: none; /* Remove default underline */
+    font-weight: 600;
+    font-size: 1.1rem; /* Slightly larger font for better readability */
+    position: relative; /* To create space for the underline effect */
+    padding: 5px 10px; /* Adds some space around the text */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth color and scale transition */
+
+}
+/* Hover Effect for Navigation Links */
+nav a:hover {
+    color: #f8f9fa; /* Slight color change for the text */
+    transform: scale(1.1); /* Slightly scale up the text */
+}
+
+/* Underline effect when hovering */
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: #f8f9fa;
+    left: 0;
+    bottom: 0;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+/* Optional: Highlight active link */
+nav a.active {
+    color: #f8f9fa;
+    font-weight: 700;
+    border-bottom: 3px solid #f8f9fa; /* Adds a bottom border to indicate active link */
+}
+
+nav .dropdown {
+    position: relative;
+}
+
+nav .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #000000a4;
+    min-width: 160px;
+    z-index: 1;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+nav .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+nav .dropdown-content a {
+    padding: 10px;
+    color: white;
+    display: block;
+}
+
+/* Container */
+.container {
+    display: flex;
+    justify-content: center;  /* Center the content */
+    align-items: flex-start;
+    padding: 20px;
+    height: 100vh;
+}
+
+/* Category Boxes Section */
+.category-boxes {
+    width: 100%;
+    text-align: center;
+}
+
+.menu-text {
+    background-color: #d2b48c; /* Equivalent HEX color */
+    padding: 6px 5px; /* Adds space around the text inside the background */
+    border-radius: 5px; /* Optional: Rounded corners */
+    font-size: x-large ;
+}
+
+
+.category-items {
+    display: flex;              
+    flex-wrap: wrap;            /* Allow items to wrap on smaller screens */
+    justify-content: center;    /* Center the items horizontally */
+    gap: 30px;                  /* Add space between items */
+    margin-top: 30px;
+}
+
+.category-box {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.87);
+    width: 220px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-box:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.363); 
+}
+
+.category-box img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.category-box h3 {
+    margin: 0;
+    color: #000000;
+}
+
+/* Menu Section */
+.menu {
+    width: 100%;
+    text-align: center;
+}
+
+.menu-items {
+    display: flex;              
+    flex-wrap: wrap;            /* Allow items to wrap on smaller screens */
+    justify-content: center;    /* Center the items horizontally */
+    gap: 20px;                  /* Add space between items */
+    margin-top: 30px;
+}
+
+.menu-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.87);
+    width: 200px;         
+    text-align: center;         /* Center content inside each item */
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.menu-item:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.363); 
+    background-color: #f1f1f1; 
+}
+
+.menu-item h3 {
+    transition: color 0.3s ease;
+    margin-top: 0;
+}
+
+.menu-item:hover h3 {
+    color: #007bff; 
+}
+
+/* Back button */
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.menu-header {
+    display: flex;
+    justify-content: center; /* Centers the menu text */
+    align-items: center;
+    position: relative;
+    width: 100%; /* Ensures full width */
+}
+
+.menu-header .menu-text {
+    background-color: hsla(32, 100%, 50%, 0.863); 
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: x-large;
+    position: relative;
+    text-align: center; /* Ensures the text is properly centered */
+}
+
+.back-btn {
+    background-color: #a74d4d;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    left: 10px; /* Moves it to the left-most side */
+    transition: background-color 0.3s;
+}
+
+
+.back-btn:hover {
+    background-color: #c46469;
+}
+/* Order Details Section */
+.order-details {
+    display: none;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    width: 50%;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    color: #343a40;
+}
+
+#total-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #28a745;
+}
+
+/* Style for Table Number Selection */
+.table-selection {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.table-selection label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-right: 8px;
+}
+
+.table-selection select {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+/* Hover Effect */
+.table-selection select:hover {
+    border-color: #007bff;
+}
+
+.checkout-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.checkout-btn:hover {
+    background-color: #0056b3;
+}
+
+button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #28a745;
+    background-color: #52d317;
+    
+}
+
+/* Notification */
+.notification {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 999;
+}
+
+.notification span {
+    font-size: 14px;
+}
+/* Notification */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #000000d5;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.notification span {
+    font-weight: bold;
+}
+
+/* Style for the increase and decrease buttons */
+button {
+    font-size: 16px;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+/* Buttons inside the quantity column */
+td button {
+    width: 30px;
+    height: 30px;
+}
+
+/* Style for the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #5e5e5e;
+}
+
+th {
+    background-color: #f4f4f4c5;
+}

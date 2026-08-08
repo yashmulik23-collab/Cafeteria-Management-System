@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details</title>
+    <style>
+        body {
+            background-color: #2fffdc;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 3px solid black;
+            padding: 10px;
+        }
+        th {
+            background-color: #12bc1b;
+        }
+        button {
+            padding: 8px 12px;
+            cursor: pointer;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+        }
+        .checkout {
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+        }
+        .place-order {
+            width: 250px !important;
+            text-align: center;
+            display: block;     
+            background-color: #2a9d8f;
+            color: white;
+            padding: 10px ;
+            font-size: 16px;
+            margin-top: 20px;
+            width: 100%;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .close {
+            color: red;
+            float: right;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        #table-number{
+            width: 30%;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Order Details</h1>
+
+    <table id="cart-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price (₹)</th>
+                <th>Quantity</th>
+                <th>Total (₹)</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="cart-body"></tbody>
+    </table>
+
+    <p><strong>Grand Total: ₹<span id="cart-total">0</span></strong></p>
+    <button onclick="clearCart()">Clear Cart</button>
+    <button class="checkout" onclick="openCheckout()">Checkout</button>
+
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCheckout()">&times;</span>
+            <h2>Review Your Order</h2>
+            <table id="checkout-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price (₹)</th>
+                        <th>Quantity</th>
+                        <th>Total (₹)</th>
+                    </tr>
+                </thead>
+                <tbody id="checkout-body"></tbody>
+            </table>
+            <p><strong>Final Total: ₹<span id="checkout-total">0</span></strong></p>
+            <label for="table-number"><strong>Table Number:</strong></label>
+            <input type="number" id="table-number" placeholder="Enter Table Number" required>
+            <div class="button-container">
+                <button class="place-order" onclick="placeOrder(event)">Place Order</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        loadCartDetails();
+
+        function loadCartDetails() {
+            let cartBody = document.getElementById("cart-body");
+            let cartTotal = document.getElementById("cart-total");
+            cartBody.innerHTML = "";
+            let totalAmount = 0;
+            cart.forEach((item, index) => {
+                let row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>₹${item.price}</td>
+                    <td>
+                        <button onclick="updateQuantity(${index}, -1)">-</button>
+                        ${item.quantity}
+                        <button onclick="updateQuantity(${index}, 1)">+</button>
+                    </td>
+                    <td>₹${item.price * item.quantity}</td>
+                    <td><button onclick="removeFromCart(${index})">Remove</button></td>
+                `;
+                cartBody.appendChild(row);
+                totalAmount += item.price * item.quantity;
+            });
+            cartTotal.textContent = totalAmount;
+        }
+
+        function updateQuantity(index, change) {
+            if (cart[index].quantity + change > 0) {
+                cart[index].quantity += change;
+            } else {
+                cart.splice(index, 1);
+            }
+            localStorage.setItem("cart", JSON.stringify(cart));
+            loadCartDetails();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            loadCartDetails();
+        }
+
+        function clearCart() {
+            cart = [];
+            localStorage.setItem("cart", JSON.stringify(cart));
+            loadCartDetails();
+        }
+
+        function openCheckout() {
+            let checkoutModal = document.getElementById("checkoutModal");
+            let checkoutBody = document.getElementById("checkout-body");
+            let checkoutTotal = document.getElementById("checkout-total");
+            checkoutBody.innerHTML = "";
+            let totalAmount = 0;
+            cart.forEach(item => {
+                let row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>₹${item.price}</td>
+                    <td>${item.quantity}</td>
+                    <td>₹${item.price * item.quantity}</td>
+                `;
+                checkoutBody.appendChild(row);
+                totalAmount += item.price * item.quantity;
+            });
+            checkoutTotal.textContent = totalAmount;
+            checkoutModal.style.display = "block";
+        }
+
+        function closeCheckout() {
+            document.getElementById("checkoutModal").style.display = "none";
+        }
+
+        function placeOrder(event) {
+            event.preventDefault();
+            clearCart();
+            closeCheckout();
+            window.location.href = "user.html";
+        }
+
+        
+    </script>
+</body>
+</html>

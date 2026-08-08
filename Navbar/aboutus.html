@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafeteria Management System</title>
+    <link rel="stylesheet" href="about.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Bastian</h1>
+    </header>
+    
+    <nav>
+        <a href="index.html" id="home-btn">Home</a> 
+        <a href="#" id="order-details-btn">Order Details</a>
+        <div class="dropdown">
+            <a href="#">Menu</a>
+            <div class="dropdown-content">
+                <a href="#" class="filter-btn" data-category="pizza-pasta">Pizza and Pasta</a>
+                <a href="#" class="filter-btn" data-category="burger-sandwich">Burger and Sandwich</a>
+                <a href="#" class="filter-btn" data-category="snacks">Snacks</a>
+                <a href="#" class="filter-btn" data-category="combos">Combos</a>
+                <a href="#" class="filter-btn" data-category="dessert">Dessert</a>
+                <a href="#" class="filter-btn" data-category="beverages">Beverages</a>
+            </div>
+        </div>
+        <a href="about.html">About us</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <div class="container">
+        <!-- Menu Section -->
+        <div id="aboutus" class="aboutus">
+            <div class="aboutus">
+            <h2>About Us</h2>
+            <h3>At Cafeteria Management System, we are revolutionizing the restaurant experience by bridging the gap between efficiency and convenience. Our innovative platform enables customers to seamlessly browse the menu, place orders, and make real-time payments by simply scanning a QR code at their table. With secure authentication via email and OTP, we ensure a smooth and hassle-free ordering process.  
+
+                We understand the challenges faced by traditional cafeteria management systems—inefficient order tracking, manual processes causing delays, improper staff scheduling, and inconsistent service quality. Our solution is designed to enhance operational efficiency, streamline staff management, and elevate customer satisfaction.  
+                
+                By leveraging technology, we aim to redefine dining experiences, ensuring faster service, reduced wait times, and a seamless transaction process. Join us in embracing the future of smart dining.</h3>
+    </div>     
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const homeButton = document.getElementById('home-btn');
+          homeButton.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default anchor behavior
+            window.location.href = 'http://127.0.0.1:3000/mainpg.html'; // Redirect to the home page
+          });
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactButton = document.querySelector('a[href="#contact"]');
+
+            contactButton.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default anchor behavior
+            window.location.href = 'http://127.0.0.1:3000/Navbar/contact.html'; // Redirect to the Contact Us page
+        });
+    });
+
+    </script>
+      
+</body>
+</html>

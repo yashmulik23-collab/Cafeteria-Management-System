@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    body {
+        background: url('https://source.unsplash.com/1600x900/?technology,abstract') no-repeat center center/cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    
+    .login-container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 15px;
+    padding: 40px; /* Increased padding */
+    width: 400px; /* Slightly wider */
+    height: 450px; /* Increased height */
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    }
+
+    h2 {
+        color: rgb(42, 180, 17);
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .input-group {
+    margin-top: 20px;
+    position: relative;
+    margin-bottom: 10px;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid rgba(80, 67, 67, 0.5);
+        background: rgba(255, 255, 255, 0.9); /* Light background for better visibility */
+        outline: none;
+        border-radius: 5px;
+        font-size: 16px;
+        color: rgb(33, 33, 33); /* Darker text color for better visibility */
+        padding-left: 15px;
+    }
+
+    input::placeholder {
+        color: transparent;
+    } 
+
+    label {
+        position: absolute;
+        top: 50%;
+        left: px;
+        transform: translateY(-50%);
+        color: rgba(80, 67, 67, 0.8);
+        font-size: 14px;
+        transition: 0.3s ease-in-out;
+        pointer-events: none;
+    }
+
+    /* Move label up when input is focused or has content */
+    input:focus + label,
+    input:not(:placeholder-shown) + label {
+        top: -10px;
+        left: 10px;
+        font-size: 13px;
+        color: rgb(12, 12, 12);
+        background: white; /* Adds background to prevent overlap */
+        padding: 0 5px;
+        border-radius: 5px;
+    }
+
+    /* Ensure input field text is visible */
+    input:focus {
+        border-color: rgb(12, 81, 232);
+        background: rgba(255, 255, 255, 1); /* Full white background on focus */
+    }
+        
+    button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        background: linear-gradient(135deg, #6D5BBA, #8D58BF);
+        color: white;
+        font-size: 18px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    
+    button:hover {
+        background: linear-gradient(135deg, #8D58BF, #6D5BBA);
+    }
+    
+    button:disabled {
+        background: gray;
+        cursor: not-allowed;
+    }
+    
+    #message {
+        color: rgb(249, 28, 28);
+        margin-top: 15px;
+        font-size: 14px;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>    
+</head>
+<body>
+    <div class="login-container">
+        <h2>Admin Login</h2>
+        <form id="adminLoginForm">
+            <div class="input-group">
+                <input type="text" id="username" required autocomplete="off">
+                <label for="username">Admin Username</label>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" required>
+                <label for="password">Password</label>
+            </div>
+            <button type="submit" id="loginBtn">Login</button>
+            <p id="message"></p>
+        </form>
+    </div>
+    <script>
+        document.getElementById("adminLoginForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+    
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const loginBtn = document.getElementById("loginBtn");
+            const message = document.getElementById("message");
+    
+            loginBtn.textContent = "Logging in...";
+            loginBtn.disabled = true;
+            message.textContent = "";
+    
+            try {
+                const response = await fetch("http://localhost:5000/admin_login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username, password })
+                });
+    
+                const data = await response.json();
+    
+                if (response.ok) {
+                    localStorage.setItem("adminSession", JSON.stringify({
+                        username: username,
+                        expiresAt: Date.now() + 5 * 60 * 60 * 1000
+                    }));
+    
+                    // Redirect to dashboard
+                    window.location.href = "dashboard.html";
+                } else {
+                    message.textContent = data.message;
+                }
+            } catch (error) {
+                message.textContent = "Server error. Please try again later.";
+            }
+    
+            loginBtn.textContent = "Login";
+            loginBtn.disabled = false;
+        });
+    
+        // Auto-redirect if session exists
+        const session = JSON.parse(localStorage.getItem("adminSession"));
+        if (session && session.expiresAt > Date.now()) {
+            window.location.href = "dashboard.html";
+        }
+    </script>
+</body>
+</html>
